@@ -4,7 +4,7 @@ import { Container, Grid, Header, Segment, Statistic, Icon, Form, Button } from 
 function App() {
   return (
     <Container>
-      <Header as="h1">Budget</Header>
+      <Header as="h1" textAlign='center'>Budget</Header>
 
       <Statistic size="small">
         <Statistic.Label>Your Balance: </Statistic.Label>
