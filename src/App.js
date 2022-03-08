@@ -1,14 +1,16 @@
 import './App.css';
-import { Container, Grid, Header, Segment, Statistic } from 'semantic-ui-react'
+import { Container, Grid, Header, Segment, Statistic, Icon } from 'semantic-ui-react'
 
 function App() {
   return (
     <Container>
       <Header as="h1">Budget</Header>
+
       <Statistic size="small">
         <Statistic.Label>Your Balance: </Statistic.Label>
         <Statistic.Value>2,550.53</Statistic.Value>
       </Statistic>
+
       <Segment textAlign="center">
         <Grid columns={2}>
           <Grid.Row>
@@ -21,12 +23,49 @@ function App() {
               </Statistic>
             </Grid.Column>
             <Grid.Column>
-            <Statistic size="tiny" color="red">
+              <Statistic size="tiny" color="red">
                 <Statistic.Label style={{ textAlign: "left" }}>
                   Expenses:
                 </Statistic.Label>
                 <Statistic.Value>623.50</Statistic.Value>
               </Statistic>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
+
+      <Header as="h3">History</Header>
+      <Segment color="red">
+        <Grid columns={3} textAlign="right">
+          <Grid.Row>
+            <Grid.Column columns={10} textAlign="left">Something</Grid.Column>
+            <Grid.Column columns={3} textAlign="right">$10,00</Grid.Column>
+            <Grid.Column columns={3}>
+              <Icon name="edit" bordered />
+              <Icon name="trash" bordered/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
+      <Segment color="red">
+        <Grid columns={3} textAlign="right">
+          <Grid.Row>
+            <Grid.Column columns={10} textAlign="left">Something else</Grid.Column>
+            <Grid.Column columns={3} textAlign="right">$20,00</Grid.Column>
+            <Grid.Column columns={3}>
+              <Icon name="edit" bordered />
+              <Icon name="trash" bordered/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment><Segment color="blue">
+        <Grid columns={3} textAlign="right">
+          <Grid.Row>
+            <Grid.Column columns={10} textAlign="left">Something important</Grid.Column>
+            <Grid.Column columns={3} textAlign="right">$100,00</Grid.Column>
+            <Grid.Column columns={3}>
+              <Icon name="edit" bordered />
+              <Icon name="trash" bordered/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
