@@ -1,5 +1,5 @@
 import './App.css';
-import { Container, Grid, Header, Segment, Statistic, Icon } from 'semantic-ui-react'
+import { Container, Grid, Header, Segment, Statistic, Icon, Form, Button } from 'semantic-ui-react'
 
 function App() {
   return (
@@ -39,10 +39,10 @@ function App() {
         <Grid columns={3} textAlign="right">
           <Grid.Row>
             <Grid.Column columns={10} textAlign="left">Something</Grid.Column>
-            <Grid.Column columns={3} textAlign="right">$10,00</Grid.Column>
+            <Grid.Column columns={3} textAlign="right">$10.00</Grid.Column>
             <Grid.Column columns={3}>
               <Icon name="edit" bordered />
-              <Icon name="trash" bordered/>
+              <Icon name="trash" bordered />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -51,10 +51,10 @@ function App() {
         <Grid columns={3} textAlign="right">
           <Grid.Row>
             <Grid.Column columns={10} textAlign="left">Something else</Grid.Column>
-            <Grid.Column columns={3} textAlign="right">$20,00</Grid.Column>
+            <Grid.Column columns={3} textAlign="right">$20.00</Grid.Column>
             <Grid.Column columns={3}>
               <Icon name="edit" bordered />
-              <Icon name="trash" bordered/>
+              <Icon name="trash" bordered />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -62,14 +62,38 @@ function App() {
         <Grid columns={3} textAlign="right">
           <Grid.Row>
             <Grid.Column columns={10} textAlign="left">Something important</Grid.Column>
-            <Grid.Column columns={3} textAlign="right">$100,00</Grid.Column>
+            <Grid.Column columns={3} textAlign="right">$100.00</Grid.Column>
             <Grid.Column columns={3}>
               <Icon name="edit" bordered />
-              <Icon name="trash" bordered/>
+              <Icon name="trash" bordered />
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
+
+      <Header as="h3">Add new Transaction</Header>
+      <Form unstackable>
+        <Form.Group>
+          <Form.Input
+            icon="tags"
+            width={12}
+            label="Description"
+            placholder="New shinny thing"
+          />
+          <Form.Input
+            icon="dollar"
+            width={4}
+            label="Value"
+            placholder="100.00"
+            iconPosition="left"
+          />
+        </Form.Group>
+        <Button.Group style={{marginTop: 20}}>
+          <Button>Cancel</Button>
+          <Button.Or />
+          <Button primary>Ok</Button>
+        </Button.Group>
+      </Form>
     </Container>
   );
 }
