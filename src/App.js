@@ -14,8 +14,11 @@ function App() {
   // const deleteEntry = (id) => { }
   function deleteEntry(id) {
     const result = entries.filter(entry => entry.id !== id);
-    console.log(`entries`, entries);
-    console.log('resilt', result);
+    setEntries(result);
+  }
+
+  function createEntry(description, value, isExpense) {
+    const result = entries.concat({ id: entries.length + 1, description, value, isExpense });
     setEntries(result);
   }
 
@@ -27,7 +30,7 @@ function App() {
       <MainHeader title="History" type="h3" />
       <EntryLines entries={entries} deleteEntry={deleteEntry} />
       <MainHeader title="Add new Transaction" type="h3" />
-      <NewEntryForm />
+      <NewEntryForm createEntry={createEntry} />
     </Container>
   );
 }
