@@ -1,5 +1,5 @@
 import './App.css';
-import { Container} from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
@@ -11,13 +11,21 @@ function App() {
 
   const [entries, setEntries] = useState(initialEntries);
 
+  // const deleteEntry = (id) => { }
+  function deleteEntry(id) {
+    const result = entries.filter(entry => entry.id !== id);
+    console.log(`entries`, entries);
+    console.log('resilt', result);
+    setEntries(result);
+  }
+
   return (
     <Container>
       <MainHeader title="Budget" type="h1" />
       <DisplayBalance title="Your Balance" value="2,550.53" size="small" />
       <DisplayBalances />
       <MainHeader title="History" type="h3" />
-      <EntryLines entries={entries} />
+      <EntryLines entries={entries} deleteEntry={deleteEntry} />
       <MainHeader title="Add new Transaction" type="h3" />
       <NewEntryForm />
     </Container>
@@ -46,7 +54,7 @@ var initialEntries = [
     isExpense: true
   },
   {
-    id: 3,
+    id: 4,
     description: "Power bill",
     value: "$50.00",
     isExpense: true
