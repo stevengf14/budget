@@ -1,27 +1,16 @@
 import './App.css';
-import { Container, Grid, Segment, Statistic, Icon } from 'semantic-ui-react';
+import { Container, Grid, Segment, Icon } from 'semantic-ui-react';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
+import DisplayBalances from './components/DisplayBalances';
 
 function App() {
   return (
     <Container>
       <MainHeader title="Budget" type="h1" />
       <DisplayBalance title="Your Balance" value="2,550.53" size="small" />
-      <Segment textAlign="center">
-        <Grid columns={2}>
-          <Grid.Row>
-            <Grid.Column>
-              <DisplayBalance title="Income" value="1,045.50" color="green" />
-            </Grid.Column>
-            <Grid.Column>
-              <DisplayBalance title="Expenses" value="623.50" color="red" />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-
+      <DisplayBalances />
       <MainHeader title="History" type="h3" />
       <Segment color="red">
         <Grid columns={3} textAlign="right">
