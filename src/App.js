@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Container } from 'semantic-ui-react';
+import { createStore } from 'redux';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
@@ -30,6 +31,7 @@ function App() {
       setEntries(newEntries);
       resetEntry();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {
@@ -45,7 +47,14 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
     console.log(`Total incomes are: ${totalIncomes} and total expenses are: ${totalExpenses}`)
-  }, [entries])
+  }, [entries]);
+
+  ///
+  const store = createStore((state = initialEntries) => {
+    return state;
+  });
+  console.log('store: ', store.getState());
+  ///
 
   // const deleteEntry = (id) => { }
   function deleteEntry(id) {
