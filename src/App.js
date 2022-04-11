@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Container } from 'semantic-ui-react';
-import { createStore, combineReducers, combineReducers } from 'redux';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
@@ -48,57 +47,6 @@ function App() {
     setIncomeTotal(totalIncomes);
     console.log(`Total incomes are: ${totalIncomes} and total expenses are: ${totalExpenses}`)
   }, [entries]);
-
-  ///
-  function entriesReducer(state = initialEntries, action) {
-    let newEntries;
-    switch (action.type) {
-      case 'CREATE_ENTRY':
-        newEntries = state.concat({ ...action.payload });
-        return newEntries;
-      case 'REMOVE_ENTRY':
-        newEntries = state.filter((entry) => entry.id !== action.payload.id);
-        return newEntries;
-      default:
-        break;
-    }
-    return state;
-  }
-
-  const combineReducers = combineReducers({
-    entries: entriesReducer,
-  });
-
-  const store = createStore(combineReducers);
-
-  store.subscribe(() => {
-    console.log('store: ', store.getState());
-  });
-
-  const payload_add = {
-    id: 5,
-    description: "Redux bill",
-    value: 100.00,
-    isExpense: false,
-  }
-
-  const payload_remove = {
-    id: 1
-  }
-
-  function createEntryRedux(payload) {
-    return { type: 'CREATE_ENTRY', payload }
-  }
-
-  function removeEntryRedux(id) {
-    return { type: 'REMOVE_ENTRY', payload: { id } }
-  }
-
-  store.dispatch(createEntryRedux(payload_add));
-  store.dispatch(removeEntryRedux(1));
-
-
-  ///
 
   // const deleteEntry = (id) => { }
   function deleteEntry(id) {
