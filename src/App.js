@@ -17,14 +17,15 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setEntryId] = useState();
 
-  useEffect(()=> {
-    if(!isOpen && entryId){
+  useEffect(() => {
+    if (!isOpen && entryId) {
       const index = entries.findIndex((entry) => entry.id === entryId);
       const newEntries = [...entries];
       newEntries[index].description = description;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
       setEntries(newEntries);
+      resetEntry();
     }
   }, [isOpen]);
 
@@ -47,9 +48,16 @@ function App() {
     }
   }
 
-  function createEntry(description, value, isExpense) {
+  function createEntry() {
     const result = entries.concat({ id: entries.length + 1, description, value, isExpense });
     setEntries(result);
+    resetEntry();
+  }
+
+  function resetEntry(){
+    setDescription('');
+      setValue('');
+      setIsExpense(true);
   }
 
   return (
