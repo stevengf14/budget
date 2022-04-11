@@ -52,24 +52,37 @@ function App() {
   ///
   const store = createStore((state = initialEntries, action) => {
     console.log(action);
+    let newEntries;
     switch (action.type) {
       case 'CREATE_ENTRY':
-        const newEntries = entries.concat({
-          id: 5,
-          description: "Redux bill",
-          value: 100.00,
-          isExpense: false,
-        });
+        newEntries = state.concat({...action.payload});
         return newEntries;
-        break;
+      case 'REMOVE_ENTRY':
+        newEntries = state.filter((entry) => entry.id !== action.payload.id);
+        return newEntries;
       default:
         break;
     }
     return state;
   });
-  console.log('store before: ', store.getState());
-  store.dispatch({type: 'CREATE_ENTRY'});
-  console.log('store after: ', store.getState());
+
+  store.subscribe(() => {
+    console.log('store: ', store.getState());
+  });
+
+  const payload_add = {
+    id: 5,
+    description: "Redux bill",
+    value: 100.00,
+    isExpense: false,
+  }
+
+  const payload_remove = {
+    id: 1
+  }
+
+  store.dispatch({ type: 'CREATE_ENTRY', payload: payload_add });
+  store.dispatch({ type: 'REMOVE_ENTRY', payload: payload_remove })
   ///
 
   // const deleteEntry = (id) => { }
