@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Container } from 'semantic-ui-react';
-import { createStore } from 'redux';
+import { createStore, combineReducers, combineReducers } from 'redux';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
@@ -65,7 +65,11 @@ function App() {
     return state;
   }
 
-  const store = createStore(entriesReducer);
+  const combineReducers = combineReducers({
+    entries: entriesReducer,
+  });
+
+  const store = createStore(combineReducers);
 
   store.subscribe(() => {
     console.log('store: ', store.getState());
