@@ -50,12 +50,11 @@ function App() {
   }, [entries]);
 
   ///
-  const store = createStore((state = initialEntries, action) => {
-    console.log(action);
+  function entriesReducer(state = initialEntries, action) {
     let newEntries;
     switch (action.type) {
       case 'CREATE_ENTRY':
-        newEntries = state.concat({...action.payload});
+        newEntries = state.concat({ ...action.payload });
         return newEntries;
       case 'REMOVE_ENTRY':
         newEntries = state.filter((entry) => entry.id !== action.payload.id);
@@ -64,7 +63,9 @@ function App() {
         break;
     }
     return state;
-  });
+  }
+
+  const store = createStore(entriesReducer);
 
   store.subscribe(() => {
     console.log('store: ', store.getState());
@@ -81,8 +82,18 @@ function App() {
     id: 1
   }
 
-  store.dispatch({ type: 'CREATE_ENTRY', payload: payload_add });
-  store.dispatch({ type: 'REMOVE_ENTRY', payload: payload_remove })
+  function createEntryRedux(payload) {
+    return { type: 'CREATE_ENTRY', payload }
+  }
+
+  function removeEntryRedux(id) {
+    return { type: 'REMOVE_ENTRY', payload: { id } }
+  }
+
+  store.dispatch(createEntryRedux(payload_add));
+  store.dispatch(removeEntryRedux(1));
+
+
   ///
 
   // const deleteEntry = (id) => { }
