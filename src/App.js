@@ -50,10 +50,26 @@ function App() {
   }, [entries]);
 
   ///
-  const store = createStore((state = initialEntries) => {
+  const store = createStore((state = initialEntries, action) => {
+    console.log(action);
+    switch (action.type) {
+      case 'CREATE_ENTRY':
+        const newEntries = entries.concat({
+          id: 5,
+          description: "Redux bill",
+          value: 100.00,
+          isExpense: false,
+        });
+        return newEntries;
+        break;
+      default:
+        break;
+    }
     return state;
   });
-  console.log('store: ', store.getState());
+  console.log('store before: ', store.getState());
+  store.dispatch({type: 'CREATE_ENTRY'});
+  console.log('store after: ', store.getState());
   ///
 
   // const deleteEntry = (id) => { }
