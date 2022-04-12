@@ -7,6 +7,7 @@ import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
 import EntryLines from './components/EntryLines';
 import ModalEdit from "./components/ModalEdit";
+import { useSelector } from 'react-redux';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const entriesRedux = useSelector((state) => state.entries);
 
   useEffect(() => {
     if (!isOpen && entryId) {
@@ -89,7 +91,7 @@ function App() {
       />
       <MainHeader title="History" type="h3" />
       <EntryLines
-        entries={entries}
+        entries={entriesRedux}
         deleteEntry={deleteEntry}
         setIsOpen={setIsOpen}
         editEntry={editEntry} />
