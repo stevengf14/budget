@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { React, Fragment } from "react";
 import { Form, Segment, Checkbox } from 'semantic-ui-react';
 
 function EntryForm({

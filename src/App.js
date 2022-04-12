@@ -49,12 +49,6 @@ function App() {
     console.log(`Total incomes are: ${totalIncomes} and total expenses are: ${totalExpenses}`)
   }, [entries]);
 
-  // const deleteEntry = (id) => { }
-  function deleteEntry(id) {
-    const result = entries.filter(entry => entry.id !== id);
-    //setEntries(result);
-  }
-
   function editEntry(id) {
     console.log(`edit entry with id ${id}`)
     if (id) {
