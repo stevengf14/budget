@@ -4,7 +4,6 @@ import EntryLine from './EntryLine';
 
 function EntryLines({
     entries,
-    deleteEntry,
     editEntry
 }) {
     return (
@@ -14,7 +13,6 @@ function EntryLines({
                     <EntryLine
                         key={entry.id}
                         {...entry}
-                        deleteEntry={deleteEntry}
                         editEntry={editEntry}
                     />
                 ))
