@@ -3,8 +3,7 @@ import { Container } from 'semantic-ui-react';
 import EntryLine from './EntryLine';
 
 function EntryLines({
-    entries,
-    editEntry
+    entries
 }) {
     return (
         <Container>
@@ -13,7 +12,6 @@ function EntryLines({
                     <EntryLine
                         key={entry.id}
                         {...entry}
-                        editEntry={editEntry}
                     />
                 ))
             }
