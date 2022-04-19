@@ -7,7 +7,9 @@ import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
 import EntryLines from './components/EntryLines';
 import ModalEdit from "./components/ModalEdit";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { getAllEntries } from './actions/entries.actions';
 
 function App() {
 
@@ -37,6 +39,11 @@ function App() {
     setIncomeTotal(totalIncomes);
     console.log(`Total incomes are: ${totalIncomes} and total expenses are: ${totalExpenses}`)
   }, [entries]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllEntries());
+  }, []);
 
   return (
     <Container>
