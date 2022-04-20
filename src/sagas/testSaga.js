@@ -58,9 +58,7 @@ export function* infinitySaga() {
         } finally {
             console.log('the fork was canceled?', yield cancelled());
         }
-
     }
-    console.log('Ending infinity saga');
 }
 
 export function* testSagaCancelled() {
