@@ -43,7 +43,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllEntries());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>
