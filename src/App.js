@@ -37,7 +37,6 @@ function App() {
     setTotal(totalIncomes - totalExpenses);
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
-    console.log(`Total incomes are: ${totalIncomes} and total expenses are: ${totalExpenses}`)
   }, [entries]);
 
   const dispatch = useDispatch();

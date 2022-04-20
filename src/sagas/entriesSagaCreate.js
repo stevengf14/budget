@@ -8,9 +8,9 @@ export function* createEntrySaga() {
 }
 
 function* createEntryToDB({ payload }) {
-    console.log(payload);
     yield call(createEntry, payload);
     yield call(createEntryDetails, payload);
+    yield put({ type: entriesTypes.CREATE_ENTRY_RESULT, payload })
 }
 
 async function createEntry({ id, description }) {

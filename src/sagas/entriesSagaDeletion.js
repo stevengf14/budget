@@ -12,7 +12,6 @@ export function* deleteEntrySaga() {
 }
 
 async function deteleEntry(id) {
-    axios.delete(`http://localhost:3001/entries/${id}`)
-    axios.delete(`http://localhost:3001/values/${id}`)
-    await new Promise((s) => setTimeout(s, 3000));
+    await axios.delete(`http://localhost:3001/entries/${id}`);
+    await axios.delete(`http://localhost:3001/values/${id}`);
 }
