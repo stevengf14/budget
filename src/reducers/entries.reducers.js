@@ -3,7 +3,7 @@ import entriesTypes from '../actions/entries.actions';
 const reducer = (state = initialEntries, action) => {
     let newEntries;
     switch (action.type) {
-        case entriesTypes.CREATE_ENTRY:
+        case entriesTypes.CREATE_ENTRY_RESULT:
             newEntries = state.concat({ ...action.payload });
             return newEntries;
         case entriesTypes.REMOVE_ENTRY_RESULT:

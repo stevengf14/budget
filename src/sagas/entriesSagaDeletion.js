@@ -1,5 +1,5 @@
-import { take, call, put, fork } from 'redux-saga/effects';
-import entriesTypes, { populateEntries, populateEntryDetails } from '../actions/entries.actions';
+import { take, call, put } from 'redux-saga/effects';
+import entriesTypes from '../actions/entries.actions';
 import axios from 'axios';
 
 
